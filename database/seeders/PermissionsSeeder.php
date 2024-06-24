@@ -37,5 +37,6 @@ class PermissionsSeeder extends Seeder
             'email' => 'dannyheijnen1991@gmail.com',
         ]);
         $user->assignRole($role2);
+        $user->assignRole('admin');
     }
 }
