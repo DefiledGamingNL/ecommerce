@@ -8,7 +8,6 @@ import AppLayout from "@/Layouts/AppLayout.vue";
             <div class="grid grid-cols-3">
                 <div class="chart">Chart</div>
                 <div class="chart">Chart</div>
-                <div class="chart">Chart</div>
             </div>
         </AppLayout>
     </template>
