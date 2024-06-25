@@ -26,8 +26,8 @@ Route::middleware([
 });
 
 
-Route::get('/posts', PostController::class)->name('posts.index');
-
 Route::group(['middleware' => ['role:Super-Admin|admin']], function () {
 Route::get('/admin', AdminController::class)->name('admin.index');
+Route::resource('posts', PostController::class);
+
 });
