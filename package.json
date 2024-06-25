@@ -20,6 +20,7 @@
         "vue": "^3.3.13"
     },
     "dependencies": {
-        "flowbite": "^2.3.0"
+        "flowbite": "^2.3.0",
+        "laravel-permission-to-vuejs": "^3.0.2"
     }
 }
