@@ -13,8 +13,17 @@ class PostController extends Controller
      */
     public function index()
     {
+        $posts = Post::paginate(10);
         return Inertia::render('Posts/Index', [
-            'posts' => Post::paginate(10)->all(),
+            'posts' => $posts->items(),
+            'pagination' => [
+                'currentPage' => $posts->currentPage(),
+                'perPage' => $posts->perPage(),
+                'total' => $posts->total(),
+                'lastPage' => $posts->lastPage(),
+                'nextPage' => $posts->nextPageUrl(),
+                'prevPage' => $posts->previousPageUrl(),
+            ],
         ]);
     }
 
