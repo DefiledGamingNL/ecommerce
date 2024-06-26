@@ -25,7 +25,7 @@ const deletePost = (id) => {
 
 <template>
     <AppLayout title="Posts">
-        <div class="w-full flex justify-end">
+        <div class="flex justify-end max-w-screen-2xl">
             <Link :href="route('posts.create')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Maak nieuw bericht</Link>
         </div>
         <section class="bg-gray-50 dark:bg-gray-900 py-3 sm:py-5">
@@ -34,7 +34,7 @@ const deletePost = (id) => {
 
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="p-4">
                                     <div class="flex items-center">
@@ -63,7 +63,7 @@ const deletePost = (id) => {
                                     </div>
                                 </th>
                                 <td class="px-4 py-2 h-4">
-                                    <p class="bg-primary-100 flex-col text-primary-800 h-full font-medium rounded dark:bg-primary-900 dark:text-primary-300">{{post.slug}}</p>
+                                    <p class="flex-col text-primary-900 h-full font-medium rounded dark:bg-primary-900 dark:text-primary-500">{{post.slug}}</p>
                                 </td>
                                 <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="flex flex-col items-start">
