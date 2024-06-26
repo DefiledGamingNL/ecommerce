@@ -29,6 +29,8 @@ Route::middleware([
 
 Route::group(['middleware' => ['role:Super-Admin|admin']], function () {
 Route::get('/admin', AdminController::class)->name('admin.index');
-Route::resource('posts', PostController::class);
-    Route::resource('categories', CategoryController::class);
+Route::resource('posts', PostController::class)->except(['show']);
+Route::resource('categories', CategoryController::class);
 });
+
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
