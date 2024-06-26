@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Posts/Index');
+        return Inertia::render('Posts/Index', [
+            'posts' => Post::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Posts/Create');
     }
 
     /**
@@ -28,7 +31,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'meta_description' => 'required|string|max:255',
+            'meta_keywords' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+
+        Post::create([
+            'title' => $validatedData['title'],
+            'slug' => $validatedData['slug'],
+            'meta_description' => $validatedData['meta_description'],
+            'meta_keywords' => $validatedData['meta_keywords'],
+            'content' => $validatedData['content'],
+            'user_id' => auth()->id(),
+
+        ]);
+
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -36,7 +57,7 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+    //
     }
 
     /**
@@ -60,6 +81,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // destroy the post
+        Post::destroy($id);
+// refresh the vue component page
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 }
