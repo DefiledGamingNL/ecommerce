@@ -15,6 +15,9 @@ class Post extends Model
         'content',
         'category_id',
         'user_id',
+        'slug',
+        'meta_description',
+        'meta_keywords',
     ];
 
     public function category(): belongsTo
