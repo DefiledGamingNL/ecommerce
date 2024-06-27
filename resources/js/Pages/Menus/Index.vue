@@ -38,6 +38,7 @@ const deleteMenu = (id) => {
                                 </th>
                                 <th scope="col" class="px-4 py-3">Naam</th>
                                 <th scope="col" class="px-4 py-3">Items</th>
+                                <th scope="col" class="px-4 py-3">Active</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -58,6 +59,9 @@ const deleteMenu = (id) => {
                                     <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option class="p-6" v-for="item in item.items" value="{{item.title}}">{{item.title}}</option>
                                     </select>
+                                </td>
+                                <td class="px-4 py-2 h-4">
+                                    <span class="px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-800">{{item.is_active ? 'Active' : 'Inactive'}}</span>
                                 </td>
                             </tr>
                             </tbody>
