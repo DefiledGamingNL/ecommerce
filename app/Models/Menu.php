@@ -9,7 +9,7 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'is_active'];
 
     public function items() {
         return $this->hasMany(MenuItem::class)->orderBy('order');
