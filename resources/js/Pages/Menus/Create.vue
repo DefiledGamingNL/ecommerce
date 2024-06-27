@@ -8,8 +8,9 @@ import ActionSection from "@/Components/ActionSection.vue";
 import FormSection from "@/Components/FormSection.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
+import Checkbox from "@/Components/Checkbox.vue";
 export default {
-    components: {SecondaryButton, InputLabel, FormSection, ActionSection, PrimaryButton, TextInput, AppLayout},
+    components: {Checkbox, SecondaryButton, InputLabel, FormSection, ActionSection, PrimaryButton, TextInput, AppLayout},
     props: {
         menus: Array,
     },
@@ -17,6 +18,7 @@ export default {
         return {
             form: {
                 name: '',
+                is_active: false,
             },
             newMenuItem: {
                 title: '',
@@ -28,10 +30,11 @@ export default {
         createMenu() {
             router.post('/menus', this.form).then(() => {
                 this.form.name = '';
+                this.form.is_active = '';
             });
         },
         updateMenu(id) {
-            router.put(`/menus/${id}`, { name: this.menus.find(menu => menu.id === id).name });
+            router.put(`/menus/${id}`, { name: this.menus.find(menu => menu.id === id).name, is_active: this.menus.find(menu => menu.id === id).is_active});
         },
         deleteMenu(id) {
             router.delete(`/menus/${id}`);
@@ -66,11 +69,15 @@ export default {
                <h2 class="text-xl font-semibold mb-2">{{ menu.name }}</h2>
                <form @submit.prevent="addMenuItem(menu.id)" class="mb-4">
                        <div class="flex gap-3 justify-between">
-                          <div class="flex gap-2">
-                              <TextInput type="text" v-model="newMenuItem.title" placeholder="Naam" class="border p-2 rounded-md col-span-1" />
-                              <TextInput type="text" v-model="newMenuItem.url" placeholder="URL" class="border p-2 rounded-md col-span-1" />
+                          <div class="flex flex-col gap-2">
+                              <InputLabel for="title">Menu item</InputLabel>
+                              <div class="flex gap-2">
+                                  <TextInput type="text" v-model="newMenuItem.title" placeholder="Naam" class="border p-2 rounded-md col-span-1" />
+                                  <TextInput type="text" v-model="newMenuItem.url" placeholder="URL" class="border p-2 rounded-md col-span-1" />
+                              </div>
+                              <PrimaryButton type="submit" class="max-w-max">Nieuw item</PrimaryButton>
                           </div>
-                           <PrimaryButton type="submit">Nieuw item</PrimaryButton>
+
                        </div>
                </form>
                <ul>
@@ -91,11 +98,18 @@ export default {
                        </div>
                    </li>
                </ul>
-               <PrimaryButton @click="menu.showEdit = !menu.showEdit" class="bg-yellow-500 text-white px-4 py-2 mr-2 rounded-md mt-2">Edit Menu</PrimaryButton>
+               <PrimaryButton @click="menu.showEdit = !menu.showEdit" class="bg-yellow-500 text-white px-4 py-2 mr-2 rounded-md mt-2">Bewerk Menu</PrimaryButton>
                <div v-if="menu.showEdit" class="mt-2">
-                   <form @submit.prevent="updateMenu(menu.id)" class="flex items-center space-x-2">
-                       <TextInput type="text" v-model="menu.name" class="border p-2 rounded-md flex-1" />
-                       <PrimaryButton type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Update Menu</PrimaryButton>
+                   <form @submit.prevent="updateMenu(menu.id)" class="flex flex-col gap-3 space-x-2">
+
+                       <div class="flex items-center mb-4">
+                           <TextInput type="text" v-model="menu.name" class="border max-w-max p-2 mr-2 rounded-md flex-1" />
+                           <label class="inline-flex items-center cursor-pointer">
+                               <Checkbox v-model="menu.is_active" class="mr-2" />
+                               <span class="text-gray-700">Active</span>
+                           </label>
+                       </div>
+                       <PrimaryButton type="submit" class="bg-yellow-500 max-w-max text-white px-4 py-2 rounded-md">Update Menu</PrimaryButton>
                    </form>
                </div>
                <PrimaryButton @click="deleteMenu(menu.id)" class="bg-red-500 text-white px-4 py-2 rounded-md mt-2">Delete Menu</PrimaryButton>
