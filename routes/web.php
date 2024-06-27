@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MenuItemController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +33,9 @@ Route::group(['middleware' => ['role:Super-Admin|admin']], function () {
 Route::get('/admin', AdminController::class)->name('admin.index');
 Route::resource('posts', PostController::class)->except(['show']);
 Route::resource('categories', CategoryController::class);
+Route::resource('menus', MenuController::class);
+    Route::resource('menu-items', MenuItemController::class)->except(['index', 'show', 'create', 'edit']);
+
 });
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
