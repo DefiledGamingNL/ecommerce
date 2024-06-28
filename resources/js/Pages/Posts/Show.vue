@@ -1,5 +1,4 @@
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue";
 
 defineProps({
     post: Object,
@@ -8,7 +7,7 @@ defineProps({
 
 
 <template>
-    <GuestLayout>
+
         <div class="max-w-2xl mx-auto py-4 px-2">
             <div class="flex flex-col">
                 <div class="heading">
@@ -20,5 +19,4 @@ defineProps({
                 </div>
             </div>
         </div>
-    </GuestLayout>
 </template>

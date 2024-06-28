@@ -1,5 +1,4 @@
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue";
 import Topbar from "@/Components/Topbar.vue";
 import HeaderBanner from "@/Components/HeaderBanner.vue";
 import Header from "@/Components/Header.vue";
