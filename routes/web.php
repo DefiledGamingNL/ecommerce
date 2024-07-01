@@ -4,17 +4,21 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuItemController;
+use App\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use \App\Http\Controllers\PostController;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    $post = Post::latest()->first();
+    return Inertia::render('Homepage/Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'post' => $post
+
     ]);
 })->name('home');
 
