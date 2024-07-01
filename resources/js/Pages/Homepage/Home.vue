@@ -2,6 +2,13 @@
 import Topbar from "@/Components/Topbar.vue";
 import HeaderBanner from "@/Components/HeaderBanner.vue";
 import Header from "@/Components/Header.vue";
+import FeaturedProductCard from "@/Components/FeaturedProductCard.vue";
+import MainElement from "@/Components/MainElement.vue";
+import BlogPost from "@/Components/BlogPost.vue";
+
+defineProps({
+    post: Object
+})
 </script>
 
 <template>
@@ -9,4 +16,9 @@ import Header from "@/Components/Header.vue";
     <Topbar />
     <HeaderBanner />
 </Header>
+    <MainElement>
+        <FeaturedProductCard />
+        <BlogPost :post />
+
+    </MainElement>
 </template>
