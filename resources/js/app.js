@@ -1,6 +1,5 @@
 import './bootstrap';
 import '../css/app.css';
-import '@tinymce/tinymce-vue';
 import { formatDate } from './utils/dateFormatter' // Import the utility function
 
 import { createApp, h } from 'vue';
