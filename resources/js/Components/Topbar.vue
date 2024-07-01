@@ -20,7 +20,7 @@ const Search = () => {
         <section id="topbar" class="shadow">
             <section id="navbar" class="border-b-2">
                 <div class="bg-white py-2">
-                    <div class="container max-w-6xl mx-auto">
+                    <div class="container max-w-7xl mx-auto">
                         <div class="flex justify-between items-center py-4">
                             <div>
                                 <nav>
@@ -41,7 +41,7 @@ const Search = () => {
             </section>
             <section id="searchbar">
                 <div class="bg-white py-2">
-                    <div class="container max-w-6xl mx-auto">
+                    <div class="container max-w-7xl mx-auto">
                         <div class="flex justify-between items-center">
                             <form @submit.prevent="Search" class="flex gap-3">
                                 <input type="text" v-model="search.query" class="w-full border-2 border-gray-200 p-2 rounded-lg" placeholder="Zoek een product">
