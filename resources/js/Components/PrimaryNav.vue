@@ -1,7 +1,7 @@
 <script setup>
-import Dropdown from "@/Components/Dropdown.vue";
-import DropdownLink from "@/Components/DropdownLink.vue";
 import Settings from "@/Components/Settings.vue";
+
+
 </script>
 
 <template>
@@ -21,7 +21,7 @@ import Settings from "@/Components/Settings.vue";
                     </a>
                 </div>
                 <div class="flex items-center">
-                    <Settings :logout="logout" />
+                    <Settings  />
                 </div>
             </div>
         </div>
