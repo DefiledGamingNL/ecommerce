@@ -26,7 +26,7 @@ const Search = () => {
                                 <nav>
                                     <ul class="flex gap-3" v-for="item in $page.props.menus" :key="item.id" :id="item.name">
                                         <li v-if="item.is_active" v-for="menuItem in item.items" :key="menuItem.id">
-                                            <Link :href="menuItem.url" class="text-gray-600">{{ menuItem.title }}</Link>
+                                            <Link :href="route('pages.show', menuItem.url)" class="text-gray-600">{{ menuItem.title }}</Link>
                                         </li>
                                     </ul>
                                 </nav>
