@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuItemController;
+use App\Http\Controllers\PageController;
 use App\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -38,8 +39,11 @@ Route::get('/admin', AdminController::class)->name('admin.index');
 Route::resource('posts', PostController::class)->except(['show']);
 Route::resource('categories', CategoryController::class);
 Route::resource('menus', MenuController::class);
-    Route::resource('menu-items', MenuItemController::class)->except(['index', 'show', 'create', 'edit']);
+Route::resource('menu-items', MenuItemController::class)->except(['index', 'show', 'create', 'edit']);
+Route::resource('pages', PageController::class)->except(['index', 'show']);
 
 });
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/{page:slug}', [PageController::class, 'show'])->name('pages.show');
