@@ -9,10 +9,6 @@ import MainElement from "@/Components/MainElement.vue";
 defineProps({
     title: String,
 });
-
-const logout = () => {
-    router.post(route('logout'));
-};
 </script>
 
 <template>
