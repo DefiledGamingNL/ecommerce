@@ -1,32 +1,39 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {Link} from "@inertiajs/vue3";
-import {ref} from "vue";
+import {Link, router} from "@inertiajs/vue3";
+import Swal from 'sweetalert2'
 
 let props = defineProps({
     posts: Array,
     required: true,
-    pagination: Array,
+    pagination: Object,
 })
 
-const posts = ref(props.posts);
+
 
 const deletePost = (id) => {
-    if (confirm('Are you sure you want to delete this post?')) {
-    //     delete the post by calling to the destroy route
-        axios.delete(route('posts.destroy', id))
-            .then(() => {
-                // remove the post from the posts array
-                posts.filter(post => post.id !== id)
-            })
-    }
+    // try catch deleting the post
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this post!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            router.delete(`/posts/${id}`)
+        }
+    })
 }
+
 </script>
 
 <template>
     <AppLayout title="Posts">
         <div class="flex justify-end max-w-screen-2xl">
             <Link :href="route('posts.create')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Maak nieuw bericht</Link>
+
         </div>
         <section class="bg-gray-50 dark:bg-gray-900 py-3 sm:py-5">
             <div class="px-4 mx-auto max-w-screen-2xl lg:px-12">
@@ -59,7 +66,10 @@ const deletePost = (id) => {
                                     {{post.title}}
                                     <div class="gap-1 flex invisible group-hover:visible">
                                         <Link :href="route('posts.edit', post.id)" class="text-xs text-blue-500 hover:text-blue-900 dark:text-gray-400">Edit</Link>
-                                        <Link @click="deletePost(post.id)" class="text-xs text-red-500 hover:text-red-900 dark:text-gray-400">Delete</Link>
+                                        <form @submit.prevent="deletePost(post.id)">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="text-xs text-red-500 hover:text-red-900 dark:text-red-400">Delete</button>
+                                        </form>
                                     </div>
                                 </th>
                                 <td class="px-4 py-2 h-4">
