@@ -20,7 +20,10 @@
         "vue": "^3.3.13"
     },
     "dependencies": {
+        "@tinymce/tinymce-vue": "^5.1.1",
         "flowbite": "^2.3.0",
-        "laravel-permission-to-vuejs": "^3.0.2"
+        "laravel-permission-to-vuejs": "^3.0.2",
+        "tinymce": "^7.2.0",
+        "vue-sweetalert2": "^5.0.11"
     }
 }
