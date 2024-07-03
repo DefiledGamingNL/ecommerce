@@ -78,4 +78,46 @@ class User extends Authenticatable
     {
         return $this->hasMany(Page::class);
     }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->belongsToMany(Product::class, 'wishlists');
+    }
+
+    public function carts()
+    {
+        return $this->belongsToMany(Product::class, 'carts');
+    }
+
+    public function compares()
+    {
+        return $this->belongsToMany(Product::class, 'compares');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Product::class, 'orders')->withPivot('quantity', 'price', 'discount_price', 'discount_percent', 'status');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+
 }
