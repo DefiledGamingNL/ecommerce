@@ -12,7 +12,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // Show all products with a pagination of 10
+        return Product::paginate(10);
+
+
     }
 
     /**
