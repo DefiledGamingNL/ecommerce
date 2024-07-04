@@ -16,11 +16,12 @@ const title = computed(() => {
 const description = computed(() => {
     return {
         503: 'Sorry, we are doing some maintenance. Please check back soon.',
-        500: 'Whoops, something went wrong on our servers.',
+        500: `Sorry, Something went wrong on our end. Please try again later.`,
         404: 'Sorry, This is not the page you are looking for.',
         403: 'Sorry, you are forbidden from accessing this page.',
     }[props.status]
 })
+
 </script>
 
 <template>

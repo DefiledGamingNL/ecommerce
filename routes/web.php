@@ -5,6 +5,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +45,10 @@ Route::resource('categories', CategoryController::class);
 Route::resource('menus', MenuController::class);
 Route::resource('menu-items', MenuItemController::class)->except(['index', 'show', 'create', 'edit']);
 Route::resource('pages', PageController::class)->except(['index', 'show']);
+Route::resource('users', UserController::class)->except(['show']);
+Route::resource('roles', RoleController::class);
+Route::resource('permissions', PermissionController::class)->except(['show']);
+Route::resource('products', ProductController::class)->except(['show']);
 
 });
 
