@@ -40,24 +40,34 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the incoming request data
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
             'meta_description' => 'required|string|max:255',
             'meta_keywords' => 'required|string|max:255',
             'content' => 'required|string',
+            'image' => 'nullable|image',
         ]);
 
+        // Handle the image upload if present
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('posts', 'public');
+        }
+
+        // Create a new Post instance with the validated data
         Post::create([
             'title' => $validatedData['title'],
             'slug' => $validatedData['slug'],
             'meta_description' => $validatedData['meta_description'],
             'meta_keywords' => $validatedData['meta_keywords'],
             'content' => $validatedData['content'],
+            'image' => $imagePath,
             'user_id' => auth()->id(),
-
         ]);
 
+        // Redirect to the posts index page with a success message
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 

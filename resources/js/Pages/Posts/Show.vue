@@ -13,6 +13,10 @@ defineProps({
         <GuestLayout>
             <div class="max-w-2xl mx-auto py-4 px-2">
                 <div class="flex flex-col">
+                    <div class="w-full h-96 bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+                        <img v-if="post.image" :src="`/storage/${post.image}`" alt="post image">
+                        <img v-else src="https://placehold.co/10x10" alt="placeholder image">
+                    </div>
                     <div class="heading">
                         <h1 class="text-7xl font-bold text-gray-800 dark:text-white">{{ post.title }}</h1>
                     </div>
