@@ -1,6 +1,8 @@
 <template>
    <AppLayout>
+       <h2 class="text-3xl font-bold">Maak een Pagina</h2>
 <div class="flex flex-col max-w-5xl mx-auto">
+
         <div class="flex flex-col gap-3">
             <label for="title" class="block text-sm font-medium text-gray-700">Titel</label>
             <input v-model="form.title" type="text" name="title" id="title" autocomplete="title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
