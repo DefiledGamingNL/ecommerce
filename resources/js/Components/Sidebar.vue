@@ -53,6 +53,9 @@ const userManagementToggle = () => {
                         <li>
                             <Link :href="route('categories.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Categorieën</Link>
                         </li>
+                        <li>
+                            <Link :href="route('pages.create')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Pagina</Link>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -60,27 +63,19 @@ const userManagementToggle = () => {
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="2" d="M7 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h1m4-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm7.441 1.559a1.907 1.907 0 0 1 0 2.698l-6.069 6.069L10 19l.674-3.372 6.07-6.07a1.907 1.907 0 0 1 2.697 0Z"/>
                         </svg>
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">User management</span>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Gebruikers manager</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                         </svg>
                     </button>
                     <ul id="user-management" :class="userManagement ? 'block' : 'hidden'" class="py-2 transition-all delay-350 space-y-2">
                         <li>
-                            <Link :href="route('posts.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Berichten</Link>
+                            <Link :href="route('roles.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Rollen</Link>
                         </li>
                         <li>
-                            <Link :href="route('categories.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Categorieën</Link>
+                            <Link :href="route('categories.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gebruikers</Link>
                         </li>
-                    </ul>
 
-                    <ul id="user-management" class="hidden py-2 transition-all delay-350 space-y-2">
-                        <li>
-                            <Link :href="route('posts.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Berichten</Link>
-                        </li>
-                        <li>
-                            <Link :href="route('categories.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Categorieën</Link>
-                        </li>
                     </ul>
                 </li>
                 <li>
